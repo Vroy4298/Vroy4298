@@ -1,0 +1,237 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+
+    <!-- Background radial gradient -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#1a0933" />
+      <stop offset="60%" style="stop-color:#0d0520" />
+      <stop offset="100%" style="stop-color:#06030f" />
+    </radialGradient>
+
+    <!-- V letter gradient -->
+    <linearGradient id="vGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c084fc" />
+      <stop offset="50%" style="stop-color:#a855f7" />
+      <stop offset="100%" style="stop-color:#38bdf8" />
+    </linearGradient>
+
+    <!-- Outer ring gradient -->
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7" />
+      <stop offset="50%" style="stop-color:#818cf8" />
+      <stop offset="100%" style="stop-color:#38bdf8" />
+    </linearGradient>
+
+    <!-- Inner ring gradient -->
+    <linearGradient id="innerRingGrad" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:0.6" />
+    </linearGradient>
+
+    <!-- Glow filter for V -->
+    <filter id="vGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="blur1"/>
+      <feGaussianBlur stdDeviation="22" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Glow for ring -->
+    <filter id="ringGlow" x="-5%" y="-5%" width="110%" height="110%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Glow for particles -->
+    <filter id="pGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Soft center bloom -->
+    <radialGradient id="bloom" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:0.4" />
+      <stop offset="60%" style="stop-color:#7c3aed;stop-opacity:0.08" />
+      <stop offset="100%" style="stop-color:#06030f;stop-opacity:0" />
+    </radialGradient>
+
+    <!-- Clip to circle -->
+    <clipPath id="circleClip">
+      <circle cx="200" cy="200" r="196"/>
+    </clipPath>
+
+    <!-- Number gradient -->
+    <linearGradient id="numGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#818cf8;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:0.9" />
+    </linearGradient>
+
+    <!-- Spinning gradient ring conic workaround using stroke-dasharray on circle -->
+    <linearGradient id="arcGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a855f7" />
+      <stop offset="100%" style="stop-color:#38bdf8" />
+    </linearGradient>
+
+  </defs>
+
+  <!-- Outer circle base -->
+  <circle cx="200" cy="200" r="198" fill="#06030f"/>
+
+  <!-- Main background fill -->
+  <circle cx="200" cy="200" r="196" fill="url(#bgGrad)" clip-path="url(#circleClip)"/>
+
+  <!-- Clipped inner content -->
+  <g clip-path="url(#circleClip)">
+
+    <!-- Subtle grid inside circle -->
+    <line x1="0" y1="100" x2="400" y2="100" stroke="#7c3aed" stroke-width="0.5" stroke-opacity="0.12"/>
+    <line x1="0" y1="150" x2="400" y2="150" stroke="#7c3aed" stroke-width="0.5" stroke-opacity="0.12"/>
+    <line x1="0" y1="200" x2="400" y2="200" stroke="#7c3aed" stroke-width="0.5" stroke-opacity="0.12"/>
+    <line x1="0" y1="250" x2="400" y2="250" stroke="#7c3aed" stroke-width="0.5" stroke-opacity="0.12"/>
+    <line x1="0" y1="300" x2="400" y2="300" stroke="#7c3aed" stroke-width="0.5" stroke-opacity="0.12"/>
+    <line x1="100" y1="0" x2="100" y2="400" stroke="#7c3aed" stroke-width="0.5" stroke-opacity="0.12"/>
+    <line x1="150" y1="0" x2="150" y2="400" stroke="#7c3aed" stroke-width="0.5" stroke-opacity="0.12"/>
+    <line x1="200" y1="0" x2="200" y2="400" stroke="#7c3aed" stroke-width="0.5" stroke-opacity="0.12"/>
+    <line x1="250" y1="0" x2="250" y2="400" stroke="#7c3aed" stroke-width="0.5" stroke-opacity="0.12"/>
+    <line x1="300" y1="0" x2="300" y2="400" stroke="#7c3aed" stroke-width="0.5" stroke-opacity="0.12"/>
+
+    <!-- Center bloom -->
+    <circle cx="200" cy="200" r="200" fill="url(#bloom)"/>
+
+    <!-- Hexagon decorative background shape -->
+    <polygon points="200,60 280,105 280,195 200,240 120,195 120,105"
+      fill="none" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.2"/>
+    <polygon points="200,80 264,116 264,188 200,224 136,188 136,116"
+      fill="none" stroke="#818cf8" stroke-width="0.8" stroke-opacity="0.12"/>
+
+    <!-- Floating particles -->
+    <g filter="url(#pGlow)">
+      <!-- Top cluster -->
+      <circle cx="145" cy="88" r="3" fill="#a855f7">
+        <animate attributeName="cy" values="88;80;88" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="fill-opacity" values="1;0.3;1" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="255" cy="95" r="2" fill="#38bdf8">
+        <animate attributeName="cy" values="95;87;95" dur="2.4s" repeatCount="indefinite"/>
+        <animate attributeName="fill-opacity" values="0.8;0.2;0.8" dur="2.4s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="200" cy="72" r="2.5" fill="#c084fc">
+        <animate attributeName="cy" values="72;64;72" dur="3.7s" repeatCount="indefinite"/>
+      </circle>
+      <!-- Bottom cluster -->
+      <circle cx="142" cy="318" r="2.5" fill="#818cf8">
+        <animate attributeName="cy" values="318;326;318" dur="2.8s" repeatCount="indefinite"/>
+        <animate attributeName="fill-opacity" values="0.8;0.2;0.8" dur="2.8s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="258" cy="310" r="2" fill="#38bdf8">
+        <animate attributeName="cy" values="310;318;310" dur="3.2s" repeatCount="indefinite"/>
+      </circle>
+      <!-- Side particles -->
+      <circle cx="75" cy="185" r="2" fill="#a855f7">
+        <animate attributeName="cx" values="75;67;75" dur="3.5s" repeatCount="indefinite"/>
+        <animate attributeName="fill-opacity" values="0.7;0.2;0.7" dur="3.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="325" cy="215" r="2" fill="#38bdf8">
+        <animate attributeName="cx" values="325;333;325" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="fill-opacity" values="0.7;0.2;0.7" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="82" cy="255" r="1.5" fill="#c084fc">
+        <animate attributeName="fill-opacity" values="0.6;0.1;0.6" dur="2.2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="318" cy="145" r="1.5" fill="#818cf8">
+        <animate attributeName="fill-opacity" values="0.6;0.1;0.6" dur="2.9s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <!-- LARGE V LETTER — the hero element -->
+    <text
+      x="200"
+      y="242"
+      font-family="'Arial Black', Impact, 'Trebuchet MS', sans-serif"
+      font-size="192"
+      font-weight="900"
+      text-anchor="middle"
+      fill="url(#vGrad)"
+      filter="url(#vGlow)"
+      letter-spacing="-8"
+    >V</text>
+
+    <!-- "roy" small text under V, subtle -->
+    <text
+      x="200"
+      y="276"
+      font-family="'Courier New', Consolas, monospace"
+      font-size="13"
+      fill="#818cf8"
+      fill-opacity="0.7"
+      text-anchor="middle"
+      letter-spacing="8"
+      font-weight="400"
+    >ROY</text>
+
+    <!-- "4298" number badge at bottom -->
+    <rect x="144" y="295" width="112" height="30" rx="15" fill="#0d0520" fill-opacity="0.8" stroke="url(#innerRingGrad)" stroke-width="1"/>
+    <text
+      x="200"
+      y="315"
+      font-family="'Courier New', Consolas, monospace"
+      font-size="15"
+      fill="url(#numGrad)"
+      text-anchor="middle"
+      letter-spacing="5"
+      font-weight="700"
+    >4298</text>
+
+    <!-- Small corner dots decorations -->
+    <circle cx="116" cy="116" r="3" fill="#7c3aed" fill-opacity="0.4"/>
+    <circle cx="284" cy="116" r="3" fill="#38bdf8" fill-opacity="0.4"/>
+    <circle cx="116" cy="284" r="3" fill="#a855f7" fill-opacity="0.4"/>
+    <circle cx="284" cy="284" r="3" fill="#0ea5e9" fill-opacity="0.4"/>
+
+  </g>
+
+  <!-- Spinning outer arc (dashed) -->
+  <circle cx="200" cy="200" r="192"
+    fill="none"
+    stroke="url(#ringGrad)"
+    stroke-width="1.5"
+    stroke-dasharray="18 10"
+    stroke-linecap="round"
+    stroke-opacity="0.5"
+    filter="url(#ringGlow)"
+  >
+    <animateTransform attributeName="transform" type="rotate"
+      from="0 200 200" to="360 200 200" dur="18s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Counter-spinning inner dashed arc -->
+  <circle cx="200" cy="200" r="185"
+    fill="none"
+    stroke="#818cf8"
+    stroke-width="1"
+    stroke-dasharray="6 16"
+    stroke-linecap="round"
+    stroke-opacity="0.35"
+  >
+    <animateTransform attributeName="transform" type="rotate"
+      from="360 200 200" to="0 200 200" dur="26s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Solid glowing border ring -->
+  <circle cx="200" cy="200" r="196"
+    fill="none"
+    stroke="url(#ringGrad)"
+    stroke-width="2.5"
+    filter="url(#ringGlow)"
+  />
+
+</svg>
